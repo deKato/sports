@@ -1,8 +1,7 @@
 import { screen } from "@testing-library/react";
-import App from "./App";
-import { store } from "./store/store";
-import { renderWithProviders } from "./store/test-utils";
 import userEvent from "@testing-library/user-event";
+import App from "./App";
+import { renderWithProviders } from "./store/test-utils";
 
 describe("renders learn react link", () => {
   it("should add 2 teams, enter results and calculate points (team 2 wins)", async () => {
