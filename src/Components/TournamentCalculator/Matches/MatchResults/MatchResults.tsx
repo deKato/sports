@@ -66,6 +66,7 @@ const MatchResults = (props: MatchResultsProps) => {
           <span>{matchData.team1.score}</span>
         ) : (
           <StyledScoreInput
+            data-testid="team-1-score-input"
             onBlur={(e) =>
               onScoreChangeHandler(setTeam1Score, e.currentTarget.value)
             }
@@ -80,6 +81,7 @@ const MatchResults = (props: MatchResultsProps) => {
           <span>{matchData.team2.score}</span>
         ) : (
           <StyledScoreInput
+            data-testid="team-2-score-input"
             onBlur={(e) =>
               onScoreChangeHandler(setTeam2Score, e.currentTarget.value)
             }

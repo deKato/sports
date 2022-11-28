@@ -1,8 +1,8 @@
 import { CaseReducer, PayloadAction } from "@reduxjs/toolkit";
-import { TeamScore, TeamsState } from "../../../../models/Models";
+import { TeamScore, TournamentState } from "../../../../models/Models";
 
 export const calculateResultsReducer: CaseReducer<
-  TeamsState,
+  TournamentState,
   PayloadAction<[TeamScore, TeamScore]>
 > = (state, action) => {
   if (action.payload[0].score === action.payload[1].score) {
@@ -13,7 +13,7 @@ export const calculateResultsReducer: CaseReducer<
 };
 
 const updateMatchDrawStats = (
-  state: TeamsState,
+  state: TournamentState,
   action: PayloadAction<[TeamScore, TeamScore]>
 ) => {
   const team1Index = state.teams.findIndex(
@@ -27,7 +27,7 @@ const updateMatchDrawStats = (
   updateDrawScore(state, team2Index);
 };
 
-const updateDrawScore = (state: TeamsState, teamIndex: number) => {
+const updateDrawScore = (state: TournamentState, teamIndex: number) => {
   state.teams[teamIndex] = {
     ...state.teams[teamIndex],
     draw: state.teams[teamIndex].draw + 1,
@@ -37,10 +37,10 @@ const updateDrawScore = (state: TeamsState, teamIndex: number) => {
 };
 
 const updateMatchStats = (
-  state: TeamsState,
+  state: TournamentState,
   action: PayloadAction<[TeamScore, TeamScore]>
 ) => {
-  const winner = action.payload.reduce(function (prev, current) {
+  const winner = action.payload.reduce((prev, current) => {
     return prev.score! > current.score! ? prev : current;
   });
   const winnerIndex = state.teams.findIndex(

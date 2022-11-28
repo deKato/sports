@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { Match, TeamsState } from "../../../models/Models";
+import { Match, TournamentState } from "../../../models/Models";
 import { RootState } from "../../../store/store";
 import { addTeamReducer } from "./reducers/addTeamReducer";
 import { calculateResultsReducer } from "./reducers/calculateResulstReducer";
@@ -9,7 +9,7 @@ export const matchesAdapter = createEntityAdapter<Match>({
   selectId: (match) => match.id,
 });
 
-const initialState: TeamsState = {
+const initialState: TournamentState = {
   teams: [],
   matches: matchesAdapter.getInitialState(),
 };

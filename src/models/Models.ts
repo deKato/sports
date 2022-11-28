@@ -16,7 +16,7 @@ export interface TeamScore {
 
 export type Match = { id: string; team1: TeamScore; team2: TeamScore };
 
-export interface TeamsState {
+export interface TournamentState {
   teams: Team[];
   matches: EntityState<Match>;
 }

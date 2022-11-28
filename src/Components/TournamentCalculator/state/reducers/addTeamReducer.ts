@@ -1,16 +1,15 @@
 import { CaseReducer, PayloadAction } from "@reduxjs/toolkit";
-import { TeamsState } from "../../../../models/Models";
+import { TournamentState } from "../../../../models/Models";
 import { matchesAdapter } from "../tournamentSlice";
 import { v4 as uuidv4 } from "uuid";
 
-export const addTeamReducer: CaseReducer<TeamsState, PayloadAction<string>> = (
-  state,
-  action
-) => {
-  const teamExists = !!state.teams?.find(
-    (team) => team.name === action.payload
-  );
-  if (!teamExists && action.payload && action.payload.trim().length > 0) {
+export const addTeamReducer: CaseReducer<
+  TournamentState,
+  PayloadAction<string>
+> = (state, action) => {
+  const newTeamName = action.payload.trim();
+  const teamExists = !!state.teams?.find((team) => team.name === newTeamName);
+  if (!teamExists && newTeamName && newTeamName.length > 0) {
     const newTeam = {
       name: action.payload.trim(),
       played: 0,
@@ -22,10 +21,10 @@ export const addTeamReducer: CaseReducer<TeamsState, PayloadAction<string>> = (
 
     state.teams.push(newTeam);
     state.teams.forEach((team) => {
-      if (team.name !== action.payload) {
+      if (team.name !== newTeamName) {
         matchesAdapter.addOne(state.matches, {
           id: uuidv4(),
-          team1: { name: action.payload },
+          team1: { name: newTeamName },
           team2: { name: team.name },
         });
       }
