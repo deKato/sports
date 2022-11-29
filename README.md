@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Sports app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+## To run project
+1. Checkout/download source
+2. Run `npm install` in project root
+3. Run `npm start`
+
+### Notes
+* Redux state could be more consistant and have some improvements, this was done to show several approaches.
+* State is saved to localStorage in default JS way. Redux-persis could've been used, but wasn't because of my time constraint and simplicity.
+* Some components could've been more consolidated or splitted even more. Stuck to the middleground.
+* App is not 100% covered by unit tests, but I've tried to include all different types of tests needed.
+* Css could use some improvement, but for Css examples, there are other projects in my repo (if needed).
+* E2e tests were not added, examples can be found in other projects if needed.
 
 ## Available Scripts
 
