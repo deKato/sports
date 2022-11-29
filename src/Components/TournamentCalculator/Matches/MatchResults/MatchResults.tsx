@@ -58,14 +58,19 @@ const MatchResults = (props: MatchResultsProps) => {
   const bothTeamScoreEntered =
     matchData.team1.score !== undefined && matchData.team2.score !== undefined;
 
+  const defaultSpacing = "24px";
+
   return (
     <StyledScoreContainer>
       <StyledTeamScoreContainer style={{ marginLeft: "auto" }}>
-        <span>{matchData.team1.name}&nbsp;</span>
+        <span>{matchData.team1.name}</span>
         {bothTeamScoreEntered ? (
-          <span>{matchData.team1.score}</span>
+          <span style={{ paddingLeft: defaultSpacing }}>
+            {matchData.team1.score}
+          </span>
         ) : (
           <StyledScoreInput
+            style={{ marginLeft: defaultSpacing }}
             data-testid="team-1-score-input"
             onBlur={(e) =>
               onScoreChangeHandler(setTeam1Score, e.currentTarget.value)
@@ -73,21 +78,22 @@ const MatchResults = (props: MatchResultsProps) => {
           />
         )}
       </StyledTeamScoreContainer>
-      <span style={{ display: "flex", justifyContent: "center" }}>
-        &nbsp;:&nbsp;
-      </span>
+      <span>:</span>
       <StyledTeamScoreContainer>
         {bothTeamScoreEntered ? (
-          <span>{matchData.team2.score}</span>
+          <span style={{ paddingRight: defaultSpacing }}>
+            {matchData.team2.score}
+          </span>
         ) : (
           <StyledScoreInput
+            style={{ marginRight: defaultSpacing }}
             data-testid="team-2-score-input"
             onBlur={(e) =>
               onScoreChangeHandler(setTeam2Score, e.currentTarget.value)
             }
           />
         )}
-        <span>&nbsp;{matchData.team2.name}</span>
+        <span>{matchData.team2.name}</span>
       </StyledTeamScoreContainer>
     </StyledScoreContainer>
   );

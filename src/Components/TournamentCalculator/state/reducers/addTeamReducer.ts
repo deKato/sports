@@ -7,11 +7,11 @@ export const addTeamReducer: CaseReducer<
   TournamentState,
   PayloadAction<string>
 > = (state, action) => {
-  const newTeamName = action.payload.trim();
+  const newTeamName = action.payload;
   const teamExists = !!state.teams?.find((team) => team.name === newTeamName);
   if (!teamExists && newTeamName && newTeamName.length > 0) {
     const newTeam = {
-      name: action.payload.trim(),
+      name: newTeamName,
       played: 0,
       win: 0,
       lost: 0,

@@ -13,7 +13,7 @@ const AddTeamInput = () => {
   };
 
   const onAddTeamHandler = () => {
-    dispatch(addTeam(teamName));
+    dispatch(addTeam(teamName.trim()));
     setTeamName("");
   };
 
